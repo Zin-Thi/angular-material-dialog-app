@@ -1,0 +1,86 @@
+<div class="main-div">
+    <div class="title-div">
+        <h2 mat-dialog-title>衮換定義情報登錄</h2>
+    </div>
+    <mat-divider></mat-divider>
+    <!-- Header部 -->
+      <div class="content-div">
+        <div fxLayout="row" class="header-div">
+            <div fxFlex="21%" fxLayout="column" style="margin-left: 1%;" fxLayoutAlign="center left">
+              <h4>得意先フォーマット名</h4>
+              <mat-form-field appearance="fill">
+                <mat-select>
+                  <mat-option *ngFor="let format of customerFormats" [value]="format.customerFormatId">
+                    {{format.customerFormatName}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxFlex="21%" fxLayout="column" style="margin-left: 1%;" fxLayoutAlign="center left">
+              <h4>得意先フォーマッID</h4>
+              <mat-form-field appearance="fill">
+                <mat-select>
+                  <mat-option *ngFor="let format of customerFormats" [value]="format.customerFormatId">
+                    {{format.customerFormatId}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div fxFlex="23%" fxLayout="column" style="margin-left: 1%;" fxLayoutAlign="center left">
+              <h4>得意先リビジョン名</h4>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input matInput placeholder="Ex. 得意先リビジョン名">
+              </mat-form-field>
+            </div>
+            <div fxFlex="22%" fxLayout="column" style="margin-left: 1%;" fxLayoutAlign="center left">
+              <h4>URL</h4>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <input matInput placeholder="Ex. URL">
+              </mat-form-field>
+            </div>
+            <div fxFlex="10%" fxLayout="column" style="margin-left: 1%;" fxLayoutAlign="center center">
+              <h4>ステータス</h4>
+              <mat-slide-toggle>無効</mat-slide-toggle>
+            </div>
+        </div>
+        <div fxLayout="row" class="json-div">
+            <div fxFlex="48%" style="margin-left: 1%;">
+              <mat-dialog-content [formGroup]="form">
+                <h4>データ辞書定義</h4>
+                <form [formGroup]="form" (submit)="submit()">
+                    <json-editor [options]="editorOptions" formControlName="myinput"></json-editor>
+                    <div *ngIf="formData">
+                        <h4>Form submitted</h4>
+                        {{ formData }}
+                    </div>
+                    <button mat-button style="background-color: lightgray; margin-top: 3px;">JSONファイルからインポート</button>
+                </form>
+              </mat-dialog-content>
+            </div>
+            <div fxFlex="48%" style="margin-left: 1%;">
+              <mat-dialog-content [formGroup]="form">
+                <h4>フィールド変換定義</h4>
+                <form [formGroup]="form" (submit)="submit()">
+                    <json-editor [options]="editorOptions" formControlName="myinput"></json-editor>
+                    <div *ngIf="formData">
+                        <h4>Form submitted</h4>
+                        {{ formData }}
+                    </div>
+                    <button mat-button style="background-color: lightgray; margin-top: 3px;">JSONファイルからインポート</button>
+                </form>
+              </mat-dialog-content>
+            </div>
+        </div>
+      </div>
+        
+    <div class="footer-div">
+        <mat-dialog-actions style="justify-content: center;">
+            <button mat-button style="background-color: lightgray; margin-right: 50%;" (click)="closeDialog()">キャンセル</button>
+            <button mat-raised-button color="primary" (click)="save()">変換定義情報登録</button>
+        </mat-dialog-actions>
+    </div>
+
+</div>
+
+
+

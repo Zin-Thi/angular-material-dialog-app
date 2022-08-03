@@ -1,1 +1,19 @@
+@import '~jsoneditor/dist/jsoneditor.min.css';
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+div.jsoneditor-mode-code{
+    height:50vh; //100vh if you want full screen
+}
+
+.backdropBackground {
+    background-color: #F5F5F5;
+}
+
+.mat-dialog-container {
+    /* add your styles */
+    background-color: #F5F5F5;
+    padding: 15px !important;
+}
